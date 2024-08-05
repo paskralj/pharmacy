@@ -16,7 +16,7 @@ public class PrescriptionController {
     private PrescriptionService prescriptionService;
 
     @PostMapping("/create")
-    public Prescription createPrescription(Prescription prescription){
+    public Prescription createPrescription(@RequestBody Prescription prescription){
         return prescriptionService.createPrescription(prescription);
     }
 
