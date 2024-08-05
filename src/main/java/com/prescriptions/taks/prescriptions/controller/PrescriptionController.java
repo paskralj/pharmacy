@@ -3,7 +3,6 @@ package com.prescriptions.taks.prescriptions.controller;
 import com.prescriptions.taks.prescriptions.entities.Prescription;
 import com.prescriptions.taks.prescriptions.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +15,12 @@ public class PrescriptionController {
     private PrescriptionService prescriptionService;
 
     @PostMapping("/create")
-    public Prescription createPrescription(@RequestBody Prescription prescription){
+    public Prescription createPrescription(@RequestBody Prescription prescription) {
         return prescriptionService.createPrescription(prescription);
     }
 
     @GetMapping("/doctor/{doctorId}")
-    public List<Prescription> getPrescriptionsByDoctorId(@PathVariable Long doctorId){
+    public List<Prescription> getPrescriptionsByDoctorId(@PathVariable Long doctorId) {
         return prescriptionService.getPrescriptionsByDoctorId(doctorId);
     }
 

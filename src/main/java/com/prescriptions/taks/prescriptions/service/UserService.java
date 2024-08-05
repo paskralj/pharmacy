@@ -2,14 +2,10 @@ package com.prescriptions.taks.prescriptions.service;
 
 import com.prescriptions.taks.prescriptions.entities.Doctor;
 import com.prescriptions.taks.prescriptions.entities.Patient;
-import com.prescriptions.taks.prescriptions.entities.User;
 import com.prescriptions.taks.prescriptions.repository.DoctorRepository;
 import com.prescriptions.taks.prescriptions.repository.PatientRepository;
-import com.prescriptions.taks.prescriptions.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UserService {
