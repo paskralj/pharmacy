@@ -1,6 +1,5 @@
 package com.prescriptions.taks.prescriptions.integration;
 
-import com.prescriptions.taks.prescriptions.entities.Doctor;
 import com.prescriptions.taks.prescriptions.repository.DoctorRepository;
 import com.prescriptions.taks.prescriptions.repository.PatientRepository;
 import com.prescriptions.taks.prescriptions.repository.PrescriptionRepository;
@@ -43,13 +42,13 @@ class UserControllerTest {
      * This method is called before each test method is executed.
      */
     @BeforeEach
-    void setUp(){
+    void setUp() {
         prescriptionRepository.deleteAll();
         doctorRepository.deleteAll();
         patientRepository.deleteAll();
     }
 
-     /**
+    /**
      * Tests the registration of a doctor.
      * Sends a POST request to the /api/users/register/doctor endpoint with a JSON payload
      * and validates the response status and content.
@@ -57,7 +56,7 @@ class UserControllerTest {
      * @throws Exception if any error occurs during the request or response handling
      */
     @Test
-    void testRegisterDoctor() throws Exception{
+    void testRegisterDoctor() throws Exception {
         String jsonRequest = "{"
                 + "\"username\": \"test1\","
                 + "\"password\": \"test2\","
@@ -81,7 +80,7 @@ class UserControllerTest {
      * @throws Exception if any error occurs during the request or response handling
      */
     @Test
-    void testRegisterPatient() throws Exception{
+    void testRegisterPatient() throws Exception {
         String jsonRequest = "{"
                 + "\"username\": \"pacijent1\","
                 + "\"password\": \"password123\","
