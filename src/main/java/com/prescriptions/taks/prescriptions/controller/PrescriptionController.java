@@ -3,6 +3,9 @@ package com.prescriptions.taks.prescriptions.controller;
 import com.prescriptions.taks.prescriptions.dto.PrescriptionDTO;
 import com.prescriptions.taks.prescriptions.entities.Prescription;
 import com.prescriptions.taks.prescriptions.service.PrescriptionService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,11 @@ public class PrescriptionController {
      * @param requestedprescription The prescription details to be created.
      * @return A {@link ResponseEntity} containing the created {@link PrescriptionDTO} and a HTTP status of CREATED.
      */
+    @Operation(summary = "Create a new prescription", description = "Creates a new prescription with the given details.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Prescription created successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
     @PostMapping("/create")
     public ResponseEntity<PrescriptionDTO> createPrescription(@RequestBody Prescription requestedprescription) {
         logger.info("Request to create prescription for medicine name: {}", requestedprescription.getMedicineName());
@@ -46,6 +54,11 @@ public class PrescriptionController {
      * @param doctorId The ID of the doctor whose prescriptions are to be retrieved.
      * @return A list of {@link PrescriptionDTO} objects associated with the specified doctor.
      */
+    @Operation(summary = "Get prescriptions by doctor ID", description = "Retrieves a list of prescriptions for a specific doctor.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "List of prescriptions retrieved successfully"),
+            @ApiResponse(responseCode = "404", description = "Doctor not found")
+    })
     @GetMapping("/doctor/{doctorId}")
     public List<PrescriptionDTO> getPrescriptionsByDoctorId(@PathVariable Long doctorId) {
         logger.info("Request to get prescriptions for doctor ID: {}", doctorId);
@@ -80,6 +93,11 @@ public class PrescriptionController {
      * @param patientId The ID of the patient whose prescriptions are to be retrieved.
      * @return A list of {@link PrescriptionDTO} objects associated with the specified patient.
      */
+    @Operation(summary = "Get prescriptions by patient ID", description = "Retrieves a list of prescriptions for a specific patient.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "List of prescriptions retrieved successfully"),
+            @ApiResponse(responseCode = "404", description = "Patient not found")
+    })
     @GetMapping("/patient/{patientId}")
     public List<PrescriptionDTO> getPrescriptionsByPatientId(@PathVariable Long patientId) {
         logger.info("Request to get prescriptions for patient ID: {}", patientId);

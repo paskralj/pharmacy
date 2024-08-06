@@ -5,6 +5,9 @@ import com.prescriptions.taks.prescriptions.dto.PatientDTO;
 import com.prescriptions.taks.prescriptions.entities.Doctor;
 import com.prescriptions.taks.prescriptions.entities.Patient;
 import com.prescriptions.taks.prescriptions.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,11 @@ public class UserController {
      * @param doctor The {@link Doctor} object containing details of the doctor to be registered.
      * @return A {@link ResponseEntity} containing the registered {@link DoctorDTO} and a HTTP status of CREATED.
      */
+    @Operation(summary = "Register a new doctor", description = "Registers a new doctor with the provided details.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Doctor registered successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
     @PostMapping("/register/doctor")
     public ResponseEntity<DoctorDTO> registerDoctor(@RequestBody Doctor doctor) {
         logger.info("Request to register doctor: {}", doctor.getUsername());
@@ -49,6 +57,11 @@ public class UserController {
      * @param patient The {@link Patient} object containing details of the patient to be registered.
      * @return A {@link ResponseEntity} containing the registered {@link PatientDTO} and a HTTP status of CREATED.
      */
+    @Operation(summary = "Register a new patient", description = "Registers a new patient with the provided details.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Patient registered successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
     @PostMapping("/register/patient")
     public ResponseEntity<PatientDTO> registerPatient(@RequestBody Patient patient) {
         logger.info("Request to register patient: {}", patient.getUsername());
