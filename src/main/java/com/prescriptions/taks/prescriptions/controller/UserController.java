@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-
+    /*
+        Prescription prescription = prescriptionService.createPrescription(requestedprescription);
+            PrescriptionDTO prescriptionDTO = convertToDTO(prescription);
+            return ResponseEntity.status(HttpStatus.CREATED).body(prescriptionDTO);
+         */
     @Autowired
     private UserService userService;
 

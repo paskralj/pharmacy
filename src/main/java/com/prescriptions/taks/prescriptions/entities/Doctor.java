@@ -11,7 +11,6 @@ import java.util.Set;
 @DiscriminatorValue("DOCTOR")
 public class Doctor extends User{
     @OneToMany(mappedBy = "doctor")
-    @JsonManagedReference
     private Set<Prescription> prescriptions;
     private String specialty;
 

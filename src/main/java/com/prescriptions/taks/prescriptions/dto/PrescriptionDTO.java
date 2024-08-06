@@ -1,25 +1,12 @@
-package com.prescriptions.taks.prescriptions.entities;
+package com.prescriptions.taks.prescriptions.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-public class Prescription {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PrescriptionDTO {
     private Long id;
-
     private String medicineName;
     private String dosage;
     private String instructions;
-
-    @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
-
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    private Long doctorId;
+    private Long patientId;
 
     public Long getId() {
         return id;
@@ -53,19 +40,19 @@ public class Prescription {
         this.instructions = instructions;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 }
